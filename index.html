@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lady in the Garden</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap');
+        
+        :root {
+            --primary-green: #228B22;
+            --light-green: #90EE90;
+            --earth-brown: #8B4513;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(rgba(34, 139, 34, 0.9), rgba(34, 139, 34, 0.95)), url('https://picsum.photos/id/1015/1920/1080') center/cover;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover { color: var(--light-green); }
+        
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos/id/1015/1920/1080') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+        }
+        
+        .hero p { font-size: 1.4rem; margin-bottom: 2rem; }
+        
+        .cta-button {
+            background: var(--primary-green);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: #196619;
+            transform: translateY(-3px);
+        }
+        
+        section { padding: 80px 0; }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-green);
+        }
+        
+        .services-grid, .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .service-card:hover { transform: translateY(-10px); }
+        
+        .service-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        
+        .portfolio-item:hover img { transform: scale(1.08); }
+        
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: grid;
+            gap: 1.2rem;
+        }
+        
+        input, textarea {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        input:focus, textarea:focus {
+            border-color: var(--primary-green);
+            outline: none;
+        }
+        
+        button {
+            background: var(--primary-green);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        footer {
+            background: var(--earth-brown);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Lady in the Garden</div>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#portfolio">Our Work</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content" style="max-width: 800px; padding: 2rem;">
+            <h1>Bringing Nature's Beauty to Your Doorstep</h1>
+            <p>Professional gardening services with a personal touch. Expert care for your outdoor spaces.</p>
+            <a href="#contact" class="cta-button">Get a Free Quote</a>
+        </div>
+    </section>
+
+    <section id="services" class="services" style="background: #f9f9f9;">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://picsum.photos/id/1016/600/400" alt="Garden Maintenance">
+                    <div style="padding: 1.5rem;">
+                        <h3>Garden Maintenance</h3>
+                        <p>Regular mowing, pruning, weeding, and seasonal care.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://picsum.photos/id/133/600/400" alt="Planting">
+                    <div style="padding: 1.5rem;">
+                        <h3>Planting & Garden Design</h3>
+                        <p>Beautiful, sustainable garden layouts and plant selection.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://picsum.photos/id/201/600/400" alt="Cleanups">
+                    <div style="padding: 1.5rem;">
+                        <h3>Seasonal Cleanups</h3>
+                        <p>Spring & fall cleanups, leaf removal, winter prep.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="container">
+            <h2>Our Recent Work</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item"><img src="https://picsum.photos/id/1015/600/400" alt="Garden project 1"></div>
+                <div class="portfolio-item"><img src="https://picsum.photos/id/133/600/400" alt="Garden project 2"></div>
+                <div class="portfolio-item"><img src="https://picsum.photos/id/201/600/400" alt="Garden project 3"></div>
+                <div class="portfolio-item"><img src="https://picsum.photos/id/106/600/400" alt="Garden project 4"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" style="background: linear-gradient(135deg, #f0f8f0, #e8f5e8);">
+        <div class="container">
+            <h2>About Lady in the Garden</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.2rem;">
+                <p>Hi! I'm [Your Daughter's Name], the Lady in the Garden. With years of hands-on experience and a true passion for plants, I help homeowners create and maintain stunning outdoor spaces.</p>
+                <p>Whether it's a full garden makeover or regular care, every project gets my personal attention.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="background: #f9f9f9;">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <input type="tel" id="phone" placeholder="Phone Number">
+                <textarea id="message" rows="5" placeholder="Tell us about your gardening needs..." required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+
+            <div class="contact-info">
+                <div>
+                    <strong>Phone:</strong><br>
+                    <a href="tel:YOUR-PHONE-NUMBER" style="color: var(--primary-green); font-size: 1.3rem;">(555) 123-4567</a>
+                </div>
+                <div>
+                    <strong>Email:</strong><br>
+                    <a href="mailto:info@ladyinthegarden.com" style="color: var(--primary-green);">info@ladyinthegarden.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Lady in the Garden. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            if (name) {
+                alert(`Thank you, ${name}! Your message has been received. We'll get back to you soon. 🌱`);
+                this.reset();
+            }
+        });
+    </script>
+</body>
+</html>
