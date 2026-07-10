@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lady in the Garden</title>
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lady in the Garden</title>
+        <style>
         
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap');
         
@@ -63,7 +63,7 @@
        .hero {
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                url('images/karijini_web.jpg') center/cover no-repeat;
+                url("images/kids@0.5x.jpg") center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -193,113 +193,138 @@
             .hero h1 { font-size: 3rem; }
         }
     </style>
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">Lady in the Garden</div>
-            <div class="nav-links">
-                <a href="#services">Services</a>
-                <a href="#portfolio">Our Work</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="logo">Lady in the Garden</div>
+                <div class="nav-links">
+                    <a href="#services">Services</a>
+                    <a href="#portfolio">Our Work</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="hero-content" style="max-width: 800px; padding: 2rem;">
+                <h1>Bringing Nature's Beauty to Your Doorstep</h1>
+                <p>Professional gardening services with a personal touch. Expert
+                    care for your outdoor spaces.</p>
+                <a href="#contact" class="cta-button">Get a Free Quote</a>
             </div>
-        </nav>
-    </header>
+        </section>
 
-    <section class="hero">
-        <div class="hero-content" style="max-width: 800px; padding: 2rem;">
-            <h1>Bringing Nature's Beauty to Your Doorstep</h1>
-            <p>Professional gardening services with a personal touch. Expert care for your outdoor spaces.</p>
-            <a href="#contact" class="cta-button">Get a Free Quote</a>
-        </div>
-    </section>
-
-    <section id="services" class="services" style="background: #f9f9f9;">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <img src="images/naomi%20butterfly%400.5x.jpg" alt="Garden Maintenance">
-                    <div style="padding: 1.5rem;">
-                        <h3>Garden Maintenance</h3>
-                        <p>Regular mowing, pruning, weeding, and seasonal care.</p>
+        <section id="services" class="services" style="background: #f9f9f9;">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <img src="images/naomi%20butterfly%400.5x.jpg"
+                            alt="Garden Maintenance">
+                        <div style="padding: 1.5rem;">
+                            <h3>Garden Maintenance</h3>
+                            <p>Regular mowing, pruning, weeding, and seasonal
+                                care.</p>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <img src="images/garden4.jpg" alt="Planting">
+                        <div style="padding: 1.5rem;">
+                            <h3>Planting & Garden Design</h3>
+                            <p>Beautiful, sustainable garden layouts and plant
+                                selection.</p>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <img src="images/garden5.jpg" alt="Cleanups">
+                        <div style="padding: 1.5rem;">
+                            <h3>Seasonal Cleanups</h3>
+                            <p>Spring & fall cleanups, leaf removal, winter
+                                prep.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="service-card">
-                    <img src="images/garden4.jpg" alt="Planting">
-                    <div style="padding: 1.5rem;">
-                        <h3>Planting & Garden Design</h3>
-                        <p>Beautiful, sustainable garden layouts and plant selection.</p>
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <div class="container">
+                <h2>Our Recent Work</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item"><img
+                            src="naomi%20butterfly.jpeg"
+                            alt="Garden project 1"></div>
+                    <div class="portfolio-item"><img src="images/garden1.jpg"
+                            alt="Garden project 2"></div>
+                    <div class="portfolio-item"><img src="images/garden2.jpg"
+                            alt="Garden project 3"></div>
+                    <div class="portfolio-item"><img src="images/garden3.webp"
+                            alt="Garden project 4"></div>
+                    <div class="portfolio-item"><img src="images/garden4.jpg"
+                            alt="Garden project 5"></div>
+                    <div class="portfolio-item"><img src="images/garden5.jpg"
+                            alt="Garden project 6"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about"
+            style="background: linear-gradient(135deg, #f0f8f0, #e8f5e8);">
+            <div class="container">
+                <h2>About Lady in the Garden</h2>
+                <div
+                    style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.2rem;">
+                    <p>Hi! I'm Naomi, the Lady in the Garden. With years of
+                        hands-on experience and a true passion for plants, I
+                        help homeowners create and maintain stunning outdoor
+                        spaces.</p>
+                    <p>Whether it's a full garden makeover or regular care,
+                        every project gets my personal attention.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" style="background: #f9f9f9;">
+            <div class="container">
+                <h2>Get In Touch</h2>
+
+                <form id="contactForm">
+                    <input type="text" id="name" placeholder="Your Name"
+                        required>
+                    <input type="email" id="email" placeholder="Your Email"
+                        required>
+                    <input type="tel" id="phone" placeholder="Phone Number">
+                    <textarea id="message" rows="5"
+                        placeholder="Tell us about your gardening needs..."
+                        required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+
+                <div class="contact-info">
+                    <div>
+                        <strong>Phone:</strong><br>
+                        <a href="tel:0457 622 644"
+                            style="color: var(--primary-green); font-size: 1.3rem;">0457
+                            622 644</a>
+                    </div>
+                    <div>
+                        <strong>Email:</strong><br>
+                        <a href="mailto:naomi.griff.92@gmai.com"
+                            style="color: var(--primary-green);">naomi.griff.92@gmai.com</a>
                     </div>
                 </div>
-                <div class="service-card">
-                    <img src="images/garden5.jpg" alt="Cleanups">
-                    <div style="padding: 1.5rem;">
-                        <h3>Seasonal Cleanups</h3>
-                        <p>Spring & fall cleanups, leaf removal, winter prep.</p>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="portfolio">
-        <div class="container">
-            <h2>Our Recent Work</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item"><img src="naomi%20butterfly.jpeg" alt="Garden project 1"></div>
-                <div class="portfolio-item"><img src="images/garden1.jpg" alt="Garden project 2"></div>
-                <div class="portfolio-item"><img src="images/garden2.jpg" alt="Garden project 3"></div>
-                <div class="portfolio-item"><img src="images/garden3.webp" alt="Garden project 4"></div>
-                <div class="portfolio-item"><img src="images/garden4.jpg" alt="Garden project 5"></div>
-                <div class="portfolio-item"><img src="images/garden5.jpg" alt="Garden project 6"></div>
+        <footer>
+            <div class="container">
+                <p>&copy; 2026 Lady in the Garden. All Rights Reserved.</p>
             </div>
-        </div>
-    </section>
+        </footer>
 
-    <section id="about" style="background: linear-gradient(135deg, #f0f8f0, #e8f5e8);">
-        <div class="container">
-            <h2>About Lady in the Garden</h2>
-            <div style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.2rem;">
-                <p>Hi! I'm Naomi, the Lady in the Garden. With years of hands-on experience and a true passion for plants, I help homeowners create and maintain stunning outdoor spaces.</p>
-                <p>Whether it's a full garden makeover or regular care, every project gets my personal attention.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" style="background: #f9f9f9;">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            
-            <form id="contactForm">
-                <input type="text" id="name" placeholder="Your Name" required>
-                <input type="email" id="email" placeholder="Your Email" required>
-                <input type="tel" id="phone" placeholder="Phone Number">
-                <textarea id="message" rows="5" placeholder="Tell us about your gardening needs..." required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-
-            <div class="contact-info">
-                <div>
-                    <strong>Phone:</strong><br>
-                    <a href="tel:0457 622 644" style="color: var(--primary-green); font-size: 1.3rem;">0457 622 644</a>
-                </div>
-                <div>
-                    <strong>Email:</strong><br>
-                    <a href="mailto:naomi.griff.92@gmai.com" style="color: var(--primary-green);">naomi.griff.92@gmai.com</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Lady in the Garden. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <script>
+        <script>
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
@@ -309,5 +334,5 @@
             }
         });
     </script>
-</body>
+    </body>
 </html>
