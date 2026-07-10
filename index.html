@@ -271,14 +271,19 @@
     <section id="contact" style="background: #f9f9f9;">
         <div class="container">
             <h2>Get In Touch</h2>
-            
-            <form id="contactForm">
-                <input type="text" id="name" placeholder="Your Name" required>
-                <input type="email" id="email" placeholder="Your Email" required>
-                <input type="tel" id="phone" placeholder="Phone Number">
-                <textarea id="message" rows="5" placeholder="Tell us about your gardening needs..." required></textarea>
+            <form id="contactForm" action="https://formspree.io/f/xjgqngyp" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="tel" name="phone" placeholder="Phone Number">
+                <textarea name="message" rows="5" placeholder="Tell us about your gardening needs..." required></textarea>
+    
+                <!-- Optional hidden fields -->
+                <input type="hidden" name="_subject" value="New Message from Lady in the Garden Website!">
+                <input type="hidden" name="_next" value="https://ladyinthegarden.au/#contact">
+    
                 <button type="submit">Send Message</button>
             </form>
+            
 
             <div class="contact-info">
                 <div>
