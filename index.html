@@ -267,36 +267,43 @@
             </div>
         </div>
     </section>
-
-    <section id="contact" style="background: #f9f9f9;">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <form id="contactForm" action="https://formspree.io/f/xjgqngyp" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="e" name="e" placeholder="Your E" required>
-                <input type="tel" name="phone" placeholder="Phone Number">
-                <textarea name="message" rows="5" placeholder="Tell us about your gardening needs..." required></textarea>
-    
-                <!-- Optional hidden fields -->
-                <input type="hidden" name="_subject" value="New Message from Lady in the Garden Website!">
-                <input type="hidden" name="_next" value="https://ladyinthegarden.au/#contact">
-    
-                <button type="submit">Send Message</button>
-            </form>
+<section id="contact" style="background: #f9f9f9;">
+    <div class="container">
+        <h2>Get In Touch</h2>
+        
+        <form id="contactForm" action="https://formspree.io/f/xjgqngyp" method="POST" style="max-width: 600px; margin: 0 auto;">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="tel" name="phone" placeholder="Phone Number">
+            <textarea name="message" rows="6" placeholder="Tell us about your gardening needs, location, or any specific requests..." required></textarea>
             
+            <!-- Hidden fields for better emails -->
+            <input type="hidden" name="_subject" value="New Inquiry from Lady in the Garden Website 🌱">
+            <input type="hidden" name="_next" value="https://ladyinthegarden.au/#contact">
+            <input type="hidden" name="_captcha" value="false">
+            
+            <button type="submit">Send Message</button>
+        </form>
 
-            <div class="contact-info">
-                <div>
-                    <strong>Phone:</strong><br>
-                    <a href="tel:0457 622 644" style="color: var(--primary-green); font-size: 1.3rem;">0457 622 644</a>
-                </div>
-                <div>
-                    <strong>Email:</strong><br>
-                    <a href="mailto:naomi.griff.92@gmail.com" style="color: var(--primary-green);">naomi.griff.92@gmail.com</a>
-                </div>
+        <!-- Success Message -->
+        <div id="successMessage" style="display: none; max-width: 600px; margin: 2rem auto; padding: 25px; background: #d4edda; color: #155724; border-radius: 8px; text-align: center; font-size: 1.15rem;">
+            ✅ Thank you! Your message has been sent successfully.<br>
+            Naomi will get back to you soon. 🌱
+        </div>
+
+        <div class="contact-info">
+            <div>
+                <strong>Phone:</strong><br>
+                <a href="tel:0457 622 644" style="color: var(--primary-green); font-size: 1.3rem;">0457 622 644</a>
+            </div>
+            <div>
+                <strong>Email:</strong><br>
+                <a href="mailto:naomi.griff.92@gmail.com" style="color: var(--primary-green);">naomi.griff.92@gmail.com</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+    
 
     <footer>
         <div class="container">
