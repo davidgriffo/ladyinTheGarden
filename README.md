@@ -8,7 +8,7 @@ single file simple web page.
   - pick github (free) 
 - change pictures ✅
 - change phone number and email ✅
-- get form to send email
+- get form to send email ✅
 - 
 
 
