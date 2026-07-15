@@ -25,7 +25,7 @@
         header {
             background: linear-gradient(rgba(34, 139, 34, 0.9), rgba(34, 139, 34, 0.95)), url('images/kids@0.5x.jpg') center/cover;
             color: white;
-            padding: 1rem 0;
+            padding: 0.6rem 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -42,9 +42,19 @@
         }
         
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 1.6rem;
             font-weight: 700;
+        }
+
+        .logo img {
+            height: 64px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.35));
         }
         
         .nav-links {
@@ -71,7 +81,6 @@
     color: white;
     margin-top: 80px;
 }
-        }
         
         .hero h1 {
             font-family: 'Playfair Display', serif;
@@ -114,6 +123,14 @@
             margin-bottom: 3rem;
             color: var(--primary-green);
         }
+
+        .section-intro {
+            max-width: 700px;
+            margin: -2rem auto 3rem;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+        }
         
         .services-grid, .portfolio-grid {
             display: grid;
@@ -144,6 +161,121 @@
         }
         
         .portfolio-item:hover img { transform: scale(1.08); }
+
+        /* Before & After slider */
+        .ba-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 3rem;
+        }
+
+        .ba-item h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-green);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .ba-slider {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+            user-select: none;
+            touch-action: pan-y;
+        }
+
+        .ba-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+        }
+
+        .ba-before-wrap {
+            position: absolute;
+            inset: 0;
+            width: 50%;
+            overflow: hidden;
+        }
+
+        .ba-before-wrap img {
+            width: var(--ba-img-width, 100%);
+            max-width: none;
+        }
+
+        .ba-divider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: white;
+            transform: translateX(-1.5px);
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            pointer-events: none;
+        }
+
+        .ba-divider::after {
+            content: '⇔';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            color: var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .ba-range {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            opacity: 0;
+            cursor: ew-resize;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .ba-label {
+            position: absolute;
+            top: 14px;
+            padding: 5px 14px;
+            background: rgba(0,0,0,0.55);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            pointer-events: none;
+        }
+
+        .ba-label-before { left: 14px; }
+        .ba-label-after { right: 14px; }
+
+        .ba-hint {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 0.75rem;
+        }
         
         form {
             max-width: 600px;
@@ -191,16 +323,22 @@
         
         @media (max-width: 768px) {
             .hero h1 { font-size: 3rem; }
+            .logo img { height: 48px; }
+            .logo { font-size: 1.2rem; }
         }
     </style>
     </head>
     <body>
         <header>
             <nav>
-                <div class="logo">Lady in the Garden</div>
+                <div class="logo">
+                    <img src="images/logo.jpg" alt="Lady in the Garden logo">
+                    <span>Lady in the Garden</span>
+                </div>
                 <div class="nav-links">
                     <a href="#services">Services</a>
                     <a href="#portfolio">Our Work</a>
+                    <a href="#before-after">Transformations</a>
                     <a href="#about">About</a>
                     <a href="#contact">Contact</a>
                 </div>
@@ -266,6 +404,49 @@
                             alt="Garden project 5"></div>
                     <div class="portfolio-item"><img src="images/garden5.jpg"
                             alt="Garden project 6"></div>
+                    <div class="portfolio-item"><img src="images/portfolio-extra1.jpg"
+                            alt="Trimmed hedge and lawn"></div>
+                    <div class="portfolio-item"><img src="images/portfolio-extra2.jpg"
+                            alt="Shaped hedge along garden bed"></div>
+                    <div class="portfolio-item"><img src="images/portfolio-extra3.jpg"
+                            alt="Neatly trimmed garden bed"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="before-after" style="background: #f9f9f9;">
+            <div class="container">
+                <h2>Before & After</h2>
+                <p class="section-intro">Drag the slider to see the transformation. Real gardens, real results.</p>
+                <div class="ba-grid">
+                    <div class="ba-item">
+                        <h3>Hedge Shaping & Tidy-Up</h3>
+                        <div class="ba-slider">
+                            <img class="ba-img" src="images/hedge-after.jpg" alt="After: neatly rounded hedge and topiary">
+                            <div class="ba-before-wrap">
+                                <img class="ba-img" src="images/hedge-before.jpg" alt="Before: overgrown hedge and topiary">
+                            </div>
+                            <div class="ba-divider"></div>
+                            <span class="ba-label ba-label-before">Before</span>
+                            <span class="ba-label ba-label-after">After</span>
+                            <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
+                        </div>
+                        <p class="ba-hint">Drag to compare ↔</p>
+                    </div>
+                    <div class="ba-item">
+                        <h3>Topiary Maze Restoration</h3>
+                        <div class="ba-slider">
+                            <img class="ba-img" src="images/maze-after.jpg" alt="After: crisp, neatly shaped topiary hedges">
+                            <div class="ba-before-wrap">
+                                <img class="ba-img" src="images/maze-before.jpg" alt="Before: overgrown topiary hedges">
+                            </div>
+                            <div class="ba-divider"></div>
+                            <span class="ba-label ba-label-before">Before</span>
+                            <span class="ba-label ba-label-after">After</span>
+                            <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
+                        </div>
+                        <p class="ba-hint">Drag to compare ↔</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -349,6 +530,29 @@
             form.style.display = 'none';
             successMessage.style.display = 'block';
         }, 800);
+    });
+
+    // Before/After slider behaviour
+    document.querySelectorAll('.ba-slider').forEach(function(slider) {
+        const range = slider.querySelector('.ba-range');
+        const beforeWrap = slider.querySelector('.ba-before-wrap');
+        const beforeImg = beforeWrap.querySelector('img');
+        const divider = slider.querySelector('.ba-divider');
+
+        // Keep the "before" image at full slider width even though its
+        // wrapper is clipped to a percentage, so it doesn't squash.
+        function sync() {
+            beforeImg.style.width = slider.offsetWidth + 'px';
+            beforeImg.style.maxWidth = 'none';
+        }
+
+        window.addEventListener('resize', sync);
+        sync();
+
+        range.addEventListener('input', function() {
+            beforeWrap.style.width = this.value + '%';
+            divider.style.left = this.value + '%';
+        });
     });
 </script>
     </body>
