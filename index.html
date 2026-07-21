@@ -69,6 +69,26 @@
         }
         
         .nav-links a:hover { color: var(--light-green); }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+        }
         
        .hero {
     height: 100vh;
@@ -325,6 +345,38 @@
             .hero h1 { font-size: 3rem; }
             .logo img { height: 48px; }
             .logo { font-size: 1.2rem; }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-green);
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .nav-links.open {
+                display: flex;
+                max-height: 400px;
+            }
+
+            .nav-links a {
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+                border-top: 1px solid rgba(255,255,255,0.15);
+            }
         }
     </style>
     </head>
@@ -335,13 +387,18 @@
                     <img src="images/logo.jpg" alt="Lady in the Garden logo">
                     <span>Lady in the Garden</span>
                 </div>
-                <div class="nav-links">
+                <div class="nav-links" id="navLinks">
                     <a href="#services">Services</a>
                     <a href="#portfolio">Our Work</a>
                     <a href="#before-after">Transformations</a>
                     <a href="#about">About</a>
                     <a href="#contact">Contact</a>
                 </div>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </nav>
         </header>
 
@@ -544,6 +601,22 @@
             form.style.display = 'none';
             successMessage.style.display = 'block';
         }, 800);
+    });
+
+    // Mobile hamburger menu
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', function() {
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    navLinks.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            navLinks.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        });
     });
 
     // Before/After slider behaviour
