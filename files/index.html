@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lady in the Garden</title>
+        <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap');
+        
+        :root {
+            --primary-green: #228B22;
+            --light-green: #90EE90;
+            --earth-brown: #8B4513;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(rgba(34, 139, 34, 0.9), rgba(34, 139, 34, 0.95)), url('images/kids@0.5x.jpg') center/cover;
+            color: white;
+            padding: 0.6rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .logo img {
+            height: 64px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.35));
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover { color: var(--light-green); }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+        }
+        
+       .hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('images/kids@0.5x.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-top: 80px;
+}
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+        }
+        
+        .hero p { font-size: 1.4rem; margin-bottom: 2rem; }
+        
+        .cta-button {
+            background: var(--primary-green);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: #196619;
+            transform: translateY(-3px);
+        }
+        
+        section { padding: 80px 0; }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-green);
+        }
+
+        .section-intro {
+            max-width: 700px;
+            margin: -2rem auto 3rem;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        .services-grid, .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .service-card:hover { transform: translateY(-10px); }
+        
+        .service-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        
+        .portfolio-item:hover img { transform: scale(1.08); }
+
+        /* Before & After slider */
+        .ba-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 3rem;
+        }
+
+        .ba-item h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-green);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .ba-slider {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+            user-select: none;
+            touch-action: pan-y;
+        }
+
+        .ba-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+        }
+
+        .ba-before-wrap {
+            position: absolute;
+            inset: 0;
+            width: 50%;
+            overflow: hidden;
+        }
+
+        .ba-before-wrap img {
+            width: var(--ba-img-width, 100%);
+            max-width: none;
+        }
+
+        .ba-divider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: white;
+            transform: translateX(-1.5px);
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            pointer-events: none;
+        }
+
+        .ba-divider::after {
+            content: '⇔';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            color: var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .ba-range {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            opacity: 0;
+            cursor: ew-resize;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .ba-label {
+            position: absolute;
+            top: 14px;
+            padding: 5px 14px;
+            background: rgba(0,0,0,0.55);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            pointer-events: none;
+        }
+
+        .ba-label-before { left: 14px; }
+        .ba-label-after { right: 14px; }
+
+        .ba-hint {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 0.75rem;
+        }
+        
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: grid;
+            gap: 1.2rem;
+        }
+        
+        input, textarea {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        input:focus, textarea:focus {
+            border-color: var(--primary-green);
+            outline: none;
+        }
+        
+        button {
+            background: var(--primary-green);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        footer {
+            background: var(--earth-brown);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .logo img { height: 48px; }
+            .logo { font-size: 1.2rem; }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-green);
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .nav-links.open {
+                display: flex;
+                max-height: 400px;
+            }
+
+            .nav-links a {
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+                border-top: 1px solid rgba(255,255,255,0.15);
+            }
+        }
+    </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="images/logo.jpg" alt="Lady in the Garden logo">
+                    <span>Lady in the Garden</span>
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <a href="#services">Services</a>
+                    <a href="#portfolio">Our Work</a>
+                    <a href="#before-after">Transformations</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="hero-content" style="max-width: 800px; padding: 2rem;">
+                <h1>Bringing Nature's Beauty to Your Doorstep</h1>
+                <p>Professional gardening services with a personal touch. Expert
+                    care for your outdoor spaces. Serving the west Brisbane
+                    area.</p>
+                <a href="#contact" class="cta-button">Get a Free Quote</a>
+            </div>
+        </section>
+
+        <section id="services" class="services" style="background: #f9f9f9;">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <img src="images/g3.jpg"
+                            alt="Garden Maintenance">
+                        <div style="padding: 1.5rem;">
+                            <h3>Garden Maintenance</h3>
+                            <p>Regular mowing, pruning, weeding, and seasonal
+                                care.</p>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <img src="images/garden4.jpg" alt="Planting">
+                        <div style="padding: 1.5rem;">
+                            <h3>Planting & Garden Design</h3>
+                            <p>Beautiful, sustainable garden layouts and plant
+                                selection.</p>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <img src="images/garden5.jpg" alt="Cleanups">
+                        <div style="padding: 1.5rem;">
+                            <h3>Seasonal Cleanups</h3>
+                            <p>Spring & fall cleanups, leaf removal, winter
+                                prep.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <div class="container">
+                <h2>Our Recent Work</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item"><img
+                            src="images/g2.jpg"
+                            alt="Garden project 1"></div>
+                    <div class="portfolio-item"><img src="images/g1.jpg"
+                            alt="Sunlit garden bed with neat planting and trimmed lawn edmge"></div>
+                    <div class="portfolio-item"><img src="images/g3.jpg"
+                            alt="Garden project 3"></div>
+                    <div class="portfolio-item"><img src="images/garden4.jpg"
+                            alt="Garden project 5"></div>
+                    <div class="portfolio-item"><img src="images/garden5.jpg"
+                            alt="Garden project 6"></div>
+                    <div class="portfolio-item"><img
+                            src="images/trimmed-hedge_and-lawn.jpg"
+                            alt="Trimmed hedge and lawn"></div>
+                    <div class="portfolio-item"><img
+                            src="images/shapedHedge.jpg"
+                            alt=" Shaped hedge along garden bed"></div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="before-after" style="background: #f9f9f9;">
+            <div class="container">
+                <h2>Before & After</h2>
+                <p class="section-intro">Drag the slider to see the
+                    transformation. Real gardens, real results.</p>
+                <div class="ba-grid">
+                    <div class="ba-item">
+                        <h3>Hedge Shaping & Tidy-Up</h3>
+                        <div class="ba-slider">
+                            <img class="ba-img" src="images/hedge-after.jpg"
+                                alt="After: neatly rounded hedge and topiary">
+                            <div class="ba-before-wrap">
+                                <img class="ba-img"
+                                    src="images/hedge-before.jpg"
+                                    alt="Before: overgrown hedge and topiary">
+                            </div>
+                            <div class="ba-divider"></div>
+                            <span class="ba-label ba-label-before">Before</span>
+                            <span class="ba-label ba-label-after">After</span>
+                            <input type="range" class="ba-range" min="0"
+                                max="100" value="50"
+                                aria-label="Drag to compare before and after">
+                        </div>
+                        <p class="ba-hint">Drag to compare ↔</p>
+                    </div>
+                    <div class="ba-item">
+                        <h3>Topiary Maze Restoration</h3>
+                        <div class="ba-slider">
+                            <img class="ba-img" src="images/maze-after.jpg"
+                                alt="After: crisp, neatly shaped topiary hedges">
+                            <div class="ba-before-wrap">
+                                <img class="ba-img" src="images/maze-before.jpg"
+                                    alt="Before: overgrown topiary hedges">
+                            </div>
+                            <div class="ba-divider"></div>
+                            <span class="ba-label ba-label-before">Before</span>
+                            <span class="ba-label ba-label-after">After</span>
+                            <input type="range" class="ba-range" min="0"
+                                max="100" value="50"
+                                aria-label="Drag to compare before and after">
+                        </div>
+                        <p class="ba-hint">Drag to compare ↔</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about"
+            style="background: linear-gradient(135deg, #f0f8f0, #e8f5e8);">
+            <div class="container">
+                <h2>About Lady in the Garden</h2>
+                <div
+                    style="max-width: 900px; margin: 0 auto; display: flex; align-items: center; gap: 3rem; flex-wrap: wrap; justify-content: center;">
+                    <img src="images/naomi-sunflower.jpg" alt="Naomi standing next to a sunflower"
+                        style="width: 280px; height: 280px; object-fit: cover; border-radius: 50%; box-shadow: 0 8px 20px rgba(0,0,0,0.18); flex-shrink: 0;">
+                    <div style="max-width: 500px; text-align: center; font-size: 1.2rem;">
+                        <p>Hi! I'm Naomi, the Lady in the Garden. With years of
+                            hands-on experience and a true passion for plants, I
+                            help homeowners create and maintain stunning outdoor
+                            spaces.</p>
+                        <p>Whether it's a full garden makeover or regular care,
+                            every project gets my personal attention.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact" style="background: #f9f9f9;">
+            <div class="container">
+                <h2>Get In Touch</h2>
+
+                <form id="contactForm" action="https://api.web3forms.com/submit"
+                    method="POST" style="max-width: 600px; margin: 0 auto;">
+                    <input type="hidden" name="access_key"
+                        value="27934f62-0eed-4115-ac03-f56a937ac32d">
+                    <input type="text" name="name" placeholder="Your Name"
+                        required>
+                    <input type="email" name="email" placeholder="Your Email"
+                        required>
+                    <input type="tel" name="phone" placeholder="Phone Number">
+                    <textarea name="message" rows="6"
+                        placeholder="Tell us about your gardening needs, location, or any specific requests..."
+                        required></textarea>
+
+                    <!-- Hidden fields for better emails -->
+                    <input type="hidden" name="subject"
+                        value="New Inquiry from Lady in the Garden Website 🌱">
+                    <input type="hidden" name="redirect"
+                        value="https://ladyinthegarden.au/#contact">
+
+                    <button type="submit">Send Message</button>
+                </form>
+
+                <!-- Success Message -->
+                <div id="successMessage"
+                    style="display: none; max-width: 600px; margin: 2rem auto; padding: 25px; background: #d4edda; color: #155724; border-radius: 8px; text-align: center; font-size: 1.15rem;">
+                    ✅ ❤️Thank you! ❤️ Your message has been sent
+                    successfully.<br>
+                    Naomi will get back to you soon. 🌱
+                </div>
+
+                <div class="contact-info">
+                    <div>
+                        <strong>Phone:</strong><br>
+                        <a href="tel:0457 622 644"
+                            style="color: var(--primary-green); font-size: 1.3rem;">0457
+                            622 644</a>
+                    </div>
+                    <div>
+                        <strong>Email:</strong><br>
+                        <a href="mailto:gardenladybne@gmail.com"
+                            style="color: var(--primary-green);">gardenladybne@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p>&copy; 2026 Lady in the Garden. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+        <script>
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function() {
+        setTimeout(() => {
+            form.style.display = 'none';
+            successMessage.style.display = 'block';
+        }, 800);
+    });
+
+    // Mobile hamburger menu
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', function() {
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    navLinks.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            navLinks.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    // Before/After slider behaviour
+    document.querySelectorAll('.ba-slider').forEach(function(slider) {
+        const range = slider.querySelector('.ba-range');
+        const beforeWrap = slider.querySelector('.ba-before-wrap');
+        const beforeImg = beforeWrap.querySelector('img');
+        const divider = slider.querySelector('.ba-divider');
+
+        // Keep the "before" image at full slider width even though its
+        // wrapper is clipped to a percentage, so it doesn't squash.
+        function sync() {
+            beforeImg.style.width = slider.offsetWidth + 'px';
+            beforeImg.style.maxWidth = 'none';
+        }
+
+        window.addEventListener('resize', sync);
+        sync();
+
+        range.addEventListener('input', function() {
+            beforeWrap.style.width = this.value + '%';
+            divider.style.left = this.value + '%';
+        });
+    });
+</script>
+    </body>
+</html>
